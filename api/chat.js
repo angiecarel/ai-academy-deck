@@ -1001,10 +1001,10 @@ ${KNOWLEDGE}`;
 
     const data = await response.json();
     if (!response.ok) {
-      return res.status(response.status).json({ error: data.error?.message || "API error" });
+      return res.status(response.status).json({ error: data.error?.message || JSON.stringify(data.error) || "API error" });
     }
     return res.status(200).json(data);
   } catch (err) {
-    return res.status(500).json({ error: "Internal server error" });
+    return res.status(500).json({ error: err.message || "Internal server error" });
   }
 }

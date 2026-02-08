@@ -2729,6 +2729,13 @@ function M16_AskAnything() {
       });
 
       const data = await response.json();
+      
+      if (data.error) {
+        setMessages([...newMessages, { role: "assistant", content: "API Error: " + (data.error.message || data.error) }]);
+        setLoading(false);
+        return;
+      }
+
       const assistantText = data.content
         ?.filter(b => b.type === "text")
         .map(b => b.text)
