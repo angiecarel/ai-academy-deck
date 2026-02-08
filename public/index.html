@@ -20,7 +20,7 @@
 <body>
   <div id="root"></div>
   <script type="text/babel">
-import { useState, useEffect } from "react";
+const { useState, useEffect } = React;
 
 const C = {
   navy: "#1B2A4A", teal: "#2A9D8F", coral: "#E76F51", gold: "#E9C46A",
@@ -3912,7 +3912,7 @@ function Static({ title, num, description }) {
 }
 
 // ─── MAIN APP ───
-export default function App() {
+function App() {
   const [current, setCurrent] = useState(0);
 
   const movements = [
@@ -3961,6 +3961,7 @@ export default function App() {
   );
 }
 
+  ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App));
   </script>
 </body>
 </html>
