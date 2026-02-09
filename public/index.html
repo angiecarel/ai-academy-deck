@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Co-Crafted AI Academy</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
@@ -103,7 +104,7 @@ function M1() {
       <div style={{ textAlign: "center", marginBottom: 56 }}>
         <div style={{ fontFamily: F.body, fontSize: 13, textTransform: "uppercase", letterSpacing: "0.2em", color: C.light, marginBottom: 12, ...useFadeIn(0) }}>Message 1</div>
         <h1 style={{ fontFamily: F.display, fontSize: 52, fontWeight: 700, color: C.navy, margin: 0, lineHeight: 1.15, ...useFadeIn(100) }}>The World Has Changed</h1>
-        <p style={{ fontFamily: F.body, fontSize: 17, color: C.mid, marginTop: 16, maxWidth: 500, marginInline: "auto", ...useFadeIn(200) }}>Three forces are converging. None are reversible.</p>
+        <p style={{ fontFamily: F.body, fontSize: 17, color: C.mid, marginTop: 16, maxWidth: 500, marginInline: "auto", ...useFadeIn(200) }}>Four forces are converging. None are reversible.</p>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24, maxWidth: 760, margin: "0 auto", width: "100%" }}>
         {cards.map((c, i) => (
@@ -123,15 +124,9 @@ function M1() {
 // ─── MOVEMENT 2: WHAT'S BREAKING ───
 function M2() {
   const [activeCard, setActiveCard] = useState(null);
-  const [depth, setDepth] = useState(0); // 0=surface, 1=evidence, 2=local
 
   function toggle(i) {
-    if (activeCard === i) {
-      if (depth < 2) { setDepth(depth + 1); }
-      else { setActiveCard(null); setDepth(0); }
-    } else {
-      setActiveCard(i); setDepth(0);
-    }
+    setActiveCard(activeCard === i ? null : i);
   }
 
   const cards = [
@@ -165,8 +160,7 @@ function M2() {
     },
   ];
 
-  const depthLabels = ["Click to see the evidence →", "Go deeper: what this means locally →", "Click to collapse"];
-
+  
   return (
     <div style={{ minHeight: "80vh" }}>
       <div style={{ textAlign: "center", marginBottom: 48 }}>
