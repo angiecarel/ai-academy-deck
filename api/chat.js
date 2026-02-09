@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
   const KNOWLEDGE = `CLAUDE AI ACADEMY ARCHITECT | ANGIE CAREL
 The fundamental insight your research surfaces is that we're not designing a school — we're
-designing a capability infrastructure that serves three distinct populations with overlapping but
+designing a capability infrastructure that serves four distinct populations with overlapping but
 different needs, timelines, and psychological states. Let me lay out a framework for how this
 could work.
 The Core Architecture: A Layered Model
@@ -421,21 +421,12 @@ creative work without eliminating the need for human taste, judgment, and vision
 Analysts & Decision Architects — people who use AI to make better decisions from complex
 information. Data, strategy, research, policy. The human role here shifts from crunching to
 interpreting, questioning, and contextualizing.
-Serving the Three Populations
-The beauty of this layered model is that your three groups enter and move through it differently:
-Entering the workforce learners likely move through all three layers in a more traditional
-(though still accelerated) sequence. Maybe 12-18 months total instead of four years. They
-spend more time in Layer 3 because they're building an initial professional identity.
-Displaced workers may move quickly through Layers 1 and 2 because their urgency is high
-and their learning is immediately contextualized by real work experience. Their Layer 3 work is
-about translating existing expertise into a new frame — and critically, this population needs the
-psychological support infrastructure your Paradigm Shift report highlights. Normalizing career
-disruption, building identity flexibility, and creating community around shared transition aren't
-nice-to-haves. They're essential to completion.
-Re-careering individuals have the most complex journey. They may need the deepest Layer 2
-work (because they're fundamentally rethinking what kind of value they create) and the most
-exploratory Layer 3 experience. This group benefits from exposure to multiple lanes before
-committing.
+Serving the Four Populations
+The beauty of this layered model is that your four groups enter and move through it differently:
+Entering-Workforce Learners are people at the beginning of their professional lives — recent graduates, current students, or young adults who may or may not be pursuing a traditional degree. They tend to be digitally comfortable but not AI-capable. They can scroll, swipe, and use consumer tools, but they haven't developed the judgment, orchestration thinking, or ethical reasoning required to work with AI as a professional discipline. For this population, the Academy provides a compressed, rigorous foundation. Those targeting roles where demonstrated capability matters more than a diploma can complete the full journey in roughly four to five months and enter the workforce with a capability portfolio. Those pursuing a traditional degree integrate the Academy's Cognitive Core as the AI backbone of their program. Their defining characteristic is formation — they are building a professional identity for the first time, and the Academy shapes how they think about work from the start.
+Displaced Workers are experienced professionals whose roles have been restructured, reduced, or eliminated by AI-driven change. They bring deep domain expertise — often decades of it — but face an urgent need to translate that expertise into a new frame. A supply chain manager with fifteen years of operational knowledge doesn't need to start over; they need to understand how AI transforms the work they already know deeply, and prove that understanding to employers. Urgency is the defining characteristic. They cannot afford eighteen months of retraining. The Academy is designed to move them through the Cognitive Core in as few as five to six weeks — their experience accelerates the learning — and into a specialized pathway that produces a tangible, employer-facing deliverable within twelve weeks. This population also carries an often-overlooked psychological dimension. Career disruption is identity disruption. The Academy's design accounts for this through cohort community, mentorship, and deliberate normalization of career transition — not as a nice-to-have, but as structurally essential to completion.
+Re-Careering Professionals are not displaced — they are choosing to redirect. A marketing director who sees that generative AI has restructured their entire field and wants to move into AI strategy. A teacher who recognizes that their communication and adult learning skills translate naturally into corporate AI education. A mid-career accountant who wants to pivot into AI governance. Re-careering professionals have the most complex journey because they are not updating existing capabilities — they are rethinking what kind of value they create. The Academy serves them with an exploratory structure: exposure to multiple spokes before commitment, the ability to build capability across more than one specialization, and a subscription model that supports ongoing development over years rather than a single credential event. Their defining characteristic is exploration — they need room to try directions before locking in.
+Solopreneurs are the population most educational models miss entirely — and the one growing fastest. There are over 41 million solopreneurs in the U.S. contributing $1.3 trillion to the economy, and AI is the single biggest capability equalizer they have ever had access to. One person with AI fluency can now produce what previously required a small team: marketing, content, product development, customer research, financial analysis, operations. The solopreneur doesn't want a job — they want to build their own thing. They come to the Academy not to prepare for employment but to multiply their individual capacity. Their journey through the Cognitive Core is intensely practical — every module is filtered through "how does this help me ship, sell, and sustain?" They are natural fits for the Doer spoke (building), the Innovator spoke (spotting opportunity), and the Distributor spoke (operationalizing and scaling). Their defining characteristic is leverage — they are trying to do more with less, and AI is the mechanism. The Academy gives them the structured fluency to use AI strategically rather than haphazardly, which is the difference between a solo operator who dabbles with ChatGPT and one who architects AI into every layer of their business.
 CLAUDE AI ACADEMY ARCHITECT | ANGIE CAREL
 This module is particularly important for re-careering and displaced worker populations. Their
 domain experience makes them natural candidates for Enabler roles, but only if they understand
@@ -790,14 +781,7 @@ rhythms, group projects. You might think about "sprint cohorts" — groups of le
 capability module together and move through it as a unit over 2-6 weeks, even if when they start
 is flexible. This preserves the speed and flexibility of continuous enrollment while providing the
 accountability and community that drive completion.
-One more thing you're missing: the Solopreneur path. Your research shows 41.8 million
-solopreneurs contributing $1.3 trillion to the economy, heavily reliant on AI tools for skill
-augmentation. This population doesn't fit cleanly into "entering the workforce," "displaced," or
-"re-careering." They're building their own thing. Many of your learners — across all three groups
-— may not want traditional employment at all. AI is the greatest capability equalizer for solo
-operators in history. One person with AI fluency can now do what previously required a small
-team. If your Academy doesn't have a path for "I want to build something myself," you're missing
-a large and growing segment of the future economy.
+The Solopreneur population is a critical fourth group. With 41.8 million solopreneurs contributing $1.3 trillion to the economy and heavily reliant on AI tools for skill augmentation, this population doesn't fit cleanly into the other three categories. They're building their own thing. Many learners — across all four groups — may not want traditional employment at all. AI is the greatest capability equalizer for solo operators in history. One person with AI fluency can now do what previously required a small team. The Academy's inclusion of solopreneurs as a distinct population ensures it serves this large and growing segment of the future economy.
 The Deeper Question to Sit With
 Your blueprint says this Academy "will not just teach subjects; it will facilitate lifelong identity
 evolution." That's a powerful claim. But it creates an obligation that goes beyond curriculum
