@@ -238,34 +238,14 @@ function M2() {
                     }}>{card.evidence}</div>
                   </div>
 
-                  {/* Local implications layer */}
-                  {depth >= 1 && (
-                    <div style={{
-                      padding: "20px 32px 24px",
-                      borderLeft: `4px solid ${card.color}`,
-                      borderTop: `1px solid ${C.border}`,
-                      marginLeft: 28,
-                      background: `${card.color}04`,
-                      animation: "fadeSlide 0.4s ease",
-                    }}>
-                      <div style={{
-                        fontFamily: F.body, fontSize: 11, textTransform: "uppercase",
-                        letterSpacing: "0.15em", color: card.color, fontWeight: 700, marginBottom: 10,
-                      }}>What This Means For Your Institution</div>
-                      <div style={{
-                        fontFamily: F.body, fontSize: 15, color: C.dark, lineHeight: 1.8,
-                      }}>{card.local}</div>
-                    </div>
-                  )}
-
-                  {/* Depth indicator */}
+                  {/* Click to collapse indicator */}
                   <div style={{
                     padding: "12px 32px 16px", textAlign: "right",
                   }}>
                     <span style={{
                       fontFamily: F.body, fontSize: 13, color: card.color,
-                      fontWeight: 500, cursor: "pointer",
-                    }}>{depthLabels[depth >= 2 ? 2 : depth]}</span>
+                      fontWeight: 500,
+                    }}>Click card to collapse</span>
                   </div>
                 </div>
               )}
