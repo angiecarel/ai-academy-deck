@@ -2742,9 +2742,26 @@ function M16_AskAnything() {
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let fullText = "";
+      let displayedText = "";
+      let buffer = "";
+      let isRevealing = false;
+      const CHAR_DELAY = 12; // milliseconds per character — increase to slow down
+
       const withAssistant = [...newMessages, { role: "assistant", content: "" }];
       setMessages(withAssistant);
       setLoading(false);
+
+      const revealBuffer = () => {
+        if (buffer.length === 0) {
+          isRevealing = false;
+          return;
+        }
+        isRevealing = true;
+        displayedText += buffer[0];
+        buffer = buffer.slice(1);
+        setMessages([...newMessages, { role: "assistant", content: displayedText }]);
+        setTimeout(revealBuffer, CHAR_DELAY);
+      };
 
       while (true) {
         const { done, value } = await reader.read();
@@ -2761,7 +2778,8 @@ function M16_AskAnything() {
               const parsed = JSON.parse(data);
               if (parsed.type === "content_block_delta" && parsed.delta?.text) {
                 fullText += parsed.delta.text;
-                setMessages([...newMessages, { role: "assistant", content: fullText }]);
+                buffer += parsed.delta.text;
+                if (!isRevealing) revealBuffer();
               }
             } catch (e) {
               // Skip non-JSON lines
@@ -2769,6 +2787,15 @@ function M16_AskAnything() {
           }
         }
       }
+
+      // Wait for buffer to finish revealing
+      await new Promise((resolve) => {
+        const check = () => {
+          if (buffer.length === 0) resolve();
+          else setTimeout(check, 50);
+        };
+        check();
+      });
 
       // Final update with complete text
       if (fullText) {
