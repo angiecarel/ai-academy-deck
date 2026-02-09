@@ -2728,24 +2728,58 @@ function M16_AskAnything() {
         }),
       });
 
-      const data = await response.json();
-      
-      if (data.error) {
-        setMessages([...newMessages, { role: "assistant", content: "API Error: " + (data.error.message || data.error) }]);
+      const contentType = response.headers.get("content-type") || "";
+
+      // If it's JSON, it's an error response
+      if (contentType.includes("application/json")) {
+        const data = await response.json();
+        setMessages([...newMessages, { role: "assistant", content: "API Error: " + (data.error?.message || data.error || "Unknown error") }]);
         setLoading(false);
         return;
       }
 
-      const assistantText = data.content
-        ?.filter(b => b.type === "text")
-        .map(b => b.text)
-        .join("\n") || "I wasn't able to generate a response. Please try again.";
+      // Stream the response
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let fullText = "";
+      const withAssistant = [...newMessages, { role: "assistant", content: "" }];
+      setMessages(withAssistant);
+      setLoading(false);
 
-      setMessages([...newMessages, { role: "assistant", content: assistantText }]);
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value, { stream: true });
+        const lines = chunk.split("\n");
+
+        for (const line of lines) {
+          if (line.startsWith("data: ")) {
+            const data = line.slice(6).trim();
+            if (data === "[DONE]") break;
+            try {
+              const parsed = JSON.parse(data);
+              if (parsed.type === "content_block_delta" && parsed.delta?.text) {
+                fullText += parsed.delta.text;
+                setMessages([...newMessages, { role: "assistant", content: fullText }]);
+              }
+            } catch (e) {
+              // Skip non-JSON lines
+            }
+          }
+        }
+      }
+
+      // Final update with complete text
+      if (fullText) {
+        setMessages([...newMessages, { role: "assistant", content: fullText }]);
+      } else {
+        setMessages([...newMessages, { role: "assistant", content: "I wasn't able to generate a response. Please try again." }]);
+      }
     } catch (err) {
       setMessages([...newMessages, { role: "assistant", content: "Something went wrong connecting to the assistant. Please try again." }]);
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const suggestedQuestions = [

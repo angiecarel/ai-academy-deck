@@ -994,16 +994,32 @@ ${KNOWLEDGE}`;
       body: JSON.stringify({
         model: "claude-sonnet-4-20250514",
         max_tokens: 1024,
+        stream: true,
         system: SYSTEM_PROMPT,
         messages: messages,
       }),
     });
 
-    const data = await response.json();
     if (!response.ok) {
-      return res.status(response.status).json({ error: data.error?.message || JSON.stringify(data.error) || "API error" });
+      const errorData = await response.json();
+      return res.status(response.status).json({ error: errorData.error?.message || "API error" });
     }
-    return res.status(200).json(data);
+
+    // Stream the response through to the client
+    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Connection", "keep-alive");
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      const chunk = decoder.decode(value, { stream: true });
+      res.write(chunk);
+    }
+    res.end();
   } catch (err) {
     return res.status(500).json({ error: err.message || "Internal server error" });
   }
